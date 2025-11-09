@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+.vscode/
+.env
+venv/
+reference/
+outputs
