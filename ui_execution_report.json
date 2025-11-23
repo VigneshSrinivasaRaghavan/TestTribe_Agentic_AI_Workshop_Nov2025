@@ -1,0 +1,52 @@
+{
+  "project": "UI",
+  "cwd": "/Users/vigneshraghavan/Downloads/playwright-demo-for-agentic-ai",
+  "junit_path": "results/junit-ui.xml",
+  "policy": "none",
+  "max_attempts": 2,
+  "summary": {
+    "total": 4,
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0
+  },
+  "results": [
+    {
+      "name": "@smoke has title",
+      "suite": "example.spec.ts",
+      "time_s": 2.478,
+      "status": "passed",
+      "message": "",
+      "attempt": 1,
+      "project": "UI"
+    },
+    {
+      "name": "@regression get started link",
+      "suite": "example.spec.ts",
+      "time_s": 3.309,
+      "status": "passed",
+      "message": "",
+      "attempt": 1,
+      "project": "UI"
+    },
+    {
+      "name": "@flaky Get started link is visible (sometimes)",
+      "suite": "example.spec.ts",
+      "time_s": 3.536,
+      "status": "failed",
+      "message": "example.spec.ts:25:5 @flaky Get started link is visible (sometimes)",
+      "attempt": 1,
+      "project": "UI"
+    },
+    {
+      "name": "@real failing assertion shows defect",
+      "suite": "example.spec.ts",
+      "time_s": 8.756,
+      "status": "failed",
+      "message": "example.spec.ts:48:5 @real failing assertion shows defect",
+      "attempt": 1,
+      "project": "UI"
+    }
+  ],
+  "errors": []
+}
