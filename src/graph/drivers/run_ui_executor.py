@@ -70,13 +70,20 @@ def main():
 
     print(f"📊 Final Summary: total={total}  ✅={passed}  ❌={failed}  ⚠️={skipped}")
 
-    # NEW: if the LLM produced a run-level summary, show it in the console
+    # NEW: print LLM summary if available
     llm_summary = str(final.get("llm_summary", "") or "")
     if llm_summary:
         print("🧠 LLM summary:")
         print(llm_summary)
 
-    # Save a tiny unified report for later (e.g., Slack/email in Day-7/8)
+    # NEW: print memory insights if available
+    memory_notes = final.get("memory_notes", []) or []
+    if memory_notes:
+        print("🗂 Memory insights:")
+        for note in memory_notes:
+            print(f"   - {note}")
+
+    # Save a unified report (unchanged, but now includes memory + llm)
     report = {
         "project": "UI",
         "cwd": args.cwd,
@@ -86,8 +93,8 @@ def main():
         "summary": summary,
         "results": final.get("results", []),
         "errors": final.get("errors", []),
-        # NEW: include the LLM run-level summary in the report
         "llm_summary": llm_summary,
+        "memory_notes": memory_notes,  # 🔹 include in saved report
     }
     out_dir = Path("outputs") / "ui"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -96,7 +103,6 @@ def main():
     print(f"💾 Saved {out_path}")
 
     # Exit code mirrors the Playwright outcome after retries (0 = success)
-    # If any failures remain in the final summary, return non-zero for CI gating.
     exit_code = 0 if failed == 0 else 1
     raise SystemExit(exit_code)
 

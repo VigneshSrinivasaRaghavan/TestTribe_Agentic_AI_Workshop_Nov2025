@@ -40,5 +40,8 @@ class UIExecState(TypedDict, total=False):
     # LLM outputs (added for Day-6 triage)
     llm_summary: str                  # Short plain-English summary of current failures
 
+    # Memory outputs (added for Day-7 class)
+    memory_notes: List[str]           # Insights from memory (e.g., recurring vs new failures)
+
 
 __all__ = ["UIExecState"]
